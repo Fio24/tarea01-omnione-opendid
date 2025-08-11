@@ -47,12 +47,12 @@ Corresponde al script `architecture_diagram.py` y refleja la arquitectura trabaj
     - `wallet-services-ns`: `Wallet`, `CApp`, `User`
     - Servicios transversales: `Legacy API middleware`, `Trusted Notification service`, `Trust agent`
     - Volumen de certificados: `Certificate Volume (PV)`
-  - **Database Layer**: `Amazon RDS`, `PostgreSQL` (lógico) y `HyperLedger Fabric`.
+  - **Database Layer**: `Amazon RDS`, `PostgreSQL` y `HyperLedger Fabric`.
 - **Legacy Layer**: servicios heredados externos integrados vía `Legacy API middleware`.
 - **Servicios externos**: *SES* para correo.
 - **Flujos principales**:
   - DNS/WAF → CloudFront → API Gateway → Ingress
-  - `issuer` ⇄ `verifier` ⇄ `legacy_api` (flujos lógicos )
+  - `issuer` ⇄ `verifier` ⇄ `legacy_api`
   - Apps (`wallet`, `capp`, `user`) consumen vía Ingress/API; escriben en RDS y leen/escriben certificados en `PV`.
   - `legacy_api` integra con `Legacy Service 1/2`.
   - `notif` → `SES` para correo.
